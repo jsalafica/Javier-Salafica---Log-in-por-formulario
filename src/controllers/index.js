@@ -3,7 +3,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const users = ["salva"];
+const users = [];
 
 const serverLogin = (req, res) => {
   res.sendFile(join(__dirname, "../../views/login.html"));
@@ -13,7 +13,7 @@ const login = (req, res) => {
   const { username } = req.body;
 
   if (!users.includes(username)) {
-    return res.send("Invalid credentials");
+    return res.send("Usuario no registrado");
   }
 
   req.session.user = username;
@@ -29,7 +29,7 @@ const register = (req, res) => {
   const { username } = req.body;
 
   if (users.includes(username)) {
-    return res.send("Username already in use");
+    return res.send("El usuario ya se encuentra registrado");
   }
 
   users.push(username);

@@ -9,7 +9,7 @@ const app = express();
 const mongoOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}; // ESTO ES PARA EL CASO DE QUE USEMOS MONGO ATLAS
+};
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
@@ -24,7 +24,7 @@ app.use(
       mongoOptions,
     }),
     cookie: {
-      maxAge: 10000, // Cuanto queremos que dure la sesion
+      maxAge: 600000,
     },
   })
 );
